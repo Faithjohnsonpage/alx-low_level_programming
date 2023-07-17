@@ -16,9 +16,8 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 
-	printf("%d \n", x);
 	/* more headers goes there */
-
+	printf("%d \n", x);
 
 	if (n > 0)
 	{

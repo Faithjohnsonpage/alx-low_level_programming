@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - A program that prints _putchar
+ * main - A program that prints
  *
- * Return: Always 0 (Success)
+ * Return: Always 0
  */
 
 int main(void)
@@ -19,5 +19,5 @@ int main(void)
 	_putchar('\n');
 
 	return (0);
-	
+
 }

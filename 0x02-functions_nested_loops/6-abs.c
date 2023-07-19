@@ -3,7 +3,7 @@
 /**
  * _abs - computes the absolute value of an integer
  *@m: The computed variable
- * Return - int
+ * Return: int
  */
 
 int _abs(int m)

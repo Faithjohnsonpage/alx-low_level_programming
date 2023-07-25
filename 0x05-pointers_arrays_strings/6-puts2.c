@@ -9,9 +9,19 @@
 
 void puts2(char *str)
 {
+	int len = 0;
+	int t = 0;
+	char *y = str;
 	int i;
 
-	for (i = 0; str[i] != '\0'; i += 2)
+	while (*y != '\0')
+	{
+		y++;
+		len++;
+	}
+	t = len - 1;
+
+	for (i = 0; i <= t; i += 2)
 	{
 		_putchar(*s);
 	}

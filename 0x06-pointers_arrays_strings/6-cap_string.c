@@ -17,7 +17,20 @@ char *cap_string(char *ch)
 
 			index++;
 
-		if (ch[index - 1] == ' ' || ch[index - 1] == '\t' || ch[index - 1] == '\n' || ch[index - 1] == ',' || ch[index - 1] == ';' || ch[index - 1] == '.' || ch[index - 1] == '!' || chi[index - 1] == '?' || ch[index - 1] == '"' || ch[index - 1] == '(' || ch[index - 1] == ')' || ch[index - 1] == '{' || ch[index - 1] == '}' || index == 0)
+		if (ch[index - 1] == ' ' ||
+		ch[index - 1] == '\t' ||
+		ch[index - 1] == '\n' ||
+		ch[index - 1] == ',' ||
+		ch[index - 1] == ';' ||
+		ch[index - 1] == '.' ||
+		ch[index - 1] == '!' ||
+		ch[index - 1] == '?' ||
+		ch[index - 1] == '"' ||
+		ch[index - 1] == '(' ||
+		ch[index - 1] == ')' ||
+		ch[index - 1] == '{' ||
+		ch[index - 1] == '}' ||
+		index == 0)
 			ch[index] -= 32;
 		index++;
 	}

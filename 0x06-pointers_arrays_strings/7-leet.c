@@ -20,9 +20,9 @@ char *leet(char *str)
 		{
 			if (str[i] == s1[j])
 			{
-				n[i] = s2[j]:
+				str[i] = s2[j]:
 			}
 		}
 	}
-	return (n);
+	return (str);
 }

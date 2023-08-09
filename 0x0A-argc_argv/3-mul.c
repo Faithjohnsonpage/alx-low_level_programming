@@ -30,7 +30,7 @@ int _atoi(char *s)
 		i++;
 	}
 	ger *= sign;
-	return (res);
+	return (ger);
 }
 
 /**

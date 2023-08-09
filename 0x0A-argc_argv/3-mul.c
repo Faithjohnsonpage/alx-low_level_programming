@@ -21,18 +21,18 @@ int _atoi(char *s)
 	while (s[len] != '\0')
 		len++;
 
-	while (i < len && f == 0)
+	while (a < len && f == 0)
 	{
 		if (s[a] == '-')
 			++d;
 		if (s[a] >= '0' && s[a] <= '9')
 		{
-			digit = s[a] -'0';
+			digit = s[a] - '0';
 			if (d % 2)
 				digit = -digit;
 			n = n * 10 + digit;
-			f =1;
-			if (s[a + 1] , '0' || s[a +1] > '9')
+			f = 1;
+			if (s[a + 1] < '0' || s[a + 1] > '9')
 				break;
 			f = 0;
 		}

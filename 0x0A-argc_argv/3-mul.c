@@ -7,31 +7,6 @@
  * Return: the converted integer
  */
 
-int _atoi(char *s)
-{
-	int sign, i;
-	unsigned int ger;
-
-	sign = 1;
-	i = 0;
-	ger = 0;
-
-	while (!(s[i] <= '9' && s[i] >= '0') && s[i] != '\0')
-	{
-		if (s[i] == '-')
-		{
-			sign *= -1;
-			i++;
-		}
-	}
-	while (s[i] <= '9' && (s[i] >= '0' && s[i] != '\0'))
-	{
-		ger = (ger * 10) + (s[i] - '0');
-		i++;
-	}
-	ger *= sign;
-	return (ger);
-}
 
 /**
  * main - a program that multiplies two numbers

@@ -42,7 +42,7 @@ int _atoi(char *s)
 
 int main(int argc, char *argv[])
 {
-	int mul = 0, n1, n2;
+	int mul, n1, n2;
 
 	if (argv < 3 || argv > 3)
 	{

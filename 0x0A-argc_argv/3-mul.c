@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 {
 	int mul = 0, n1, n2;
 
-	if (argv < 3 || argv > 3)
+	if (argc < 3 || argc > 3)
 	{
 		printf("Error\n");
 		return (1);
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 	n2 = _atoi(argv[2]);
 	mul = n1 * n2;
 
-	printf("%d", mul);
+	printf("%d\n", mul);
 
 	return (0);
 }

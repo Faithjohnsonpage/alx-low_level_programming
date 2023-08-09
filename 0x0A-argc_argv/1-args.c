@@ -10,8 +10,8 @@
 
 int main(int argc, char *argv[])
 {
-	(void)argv; /* Declare an unused variable */
-	printf("%d"\n, argc - 1);
+	(void) argv; /*Declare an unused variable*/
+	printf("%d\n", argc);
 
 	return (0);
 }

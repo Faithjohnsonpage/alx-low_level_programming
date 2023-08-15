@@ -3,10 +3,10 @@
 
 /**
  * init_dog - initialize a variable of type struct dog
+ * @d: pointer to data type struct dog
  * @name: pointer to char
  * @age: float variable
  * @owner: pointer to char
- * @d: pointer to data type struct dog
  *
  */
 

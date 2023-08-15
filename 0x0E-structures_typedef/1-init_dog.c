@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
 
@@ -9,7 +8,6 @@
  * @owner: pointer to char
  * @d: pointer to data type struct dog
  *
- * Return: void
  */
 
 void init_dog(struct dog *d, char *name, float age, char *owner)

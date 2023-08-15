@@ -27,19 +27,18 @@ int _strlen(char *s)
 
 char *_strcpy(char *dest, char *src)
 {
-	int i, len1;
+	int a = 0;
+	int b = 0;
 
-	len1 = 0;
-
-	while (src[len1] != '\0')
+	while (*(src + a) != '\0')
 	{
-		len1++;
+		a++;
 	}
-	for (i = 0; i < len1; i++)
+	for (; b < a; b++)
 	{
-		dest[i] = src[i];
+		dest[b] = src[b];
 	}
-	dest[i] = '\0';
+	dest[a] = '\0';
 
 	return (dest);
 }

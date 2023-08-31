@@ -7,6 +7,7 @@
 void print_binary(unsigned long int n)
 {
 	int shift, i;
+
 	if (n == 0)
 	{
 		_putchar('0');
@@ -20,7 +21,7 @@ void print_binary(unsigned long int n)
 		shift--;
 	}
 
-	for ( i = shift; i >= 0; i--)
+	for (i = shift; i >= 0; i--)
 	{
 		_putchar((n & (1UL << i)) ? '1' : '0');
 	}

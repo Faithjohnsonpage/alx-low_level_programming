@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <stdio.h>
+#include <errno.h>
 #include "main.h"
 
 /**

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
  * copy_file_func - Copies the content of one file to another.

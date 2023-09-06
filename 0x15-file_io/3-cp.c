@@ -4,6 +4,34 @@
 #include <stdlib.h>
 #include "main.h"
 
+int copy_file_func(const char *file_from, const char *file_to);
+int create_new_file(const char *file_to);
+void close_fd(int fd, const char *file_name);
+
+/**
+ * main - Copies the contents of a file to another file.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: 0 on success.
+ */
+
+int main(int argc, char **argv)
+{
+	int res;
+
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
+
+	res = copy_file_func(argv[1], argv[2]);
+
+	dprintf(STDOUT_FILENO, "%i\n", res);
+	return (0);
+}
+
 /**
  * copy_file_func - Copies the content of one file to another.
  * @file_from: The name of the source file.
@@ -11,6 +39,7 @@
  *
  * Return: Always returns 0 on successful completion.
  */
+
 int copy_file_func(const char *file_from, const char *file_to)
 {
 	int fd1, fd2;
@@ -24,22 +53,16 @@ int copy_file_func(const char *file_from, const char *file_to)
 		exit(98);
 	}
 
-	fd2 = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd2 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_to);
-		close(fd1);
-		exit(99);
-	}
+	fd2 = create_new_file(file_to);
 
-	while ((nb_read = read(fd1, buffer, 1024)) > 0)
+	while ((nb_read = read(fd1, buffer, sizeof(buffer))) > 0)
 	{
 		nb_write = write(fd2, buffer, nb_read);
 		if (nb_write == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_to);
-			close(fd1);
-			close(fd2);
+			close_fd(fd1, file_from);
+			close_fd(fd2, file_to);
 			exit(99);
 		}
 	}
@@ -47,44 +70,47 @@ int copy_file_func(const char *file_from, const char *file_to)
 	if (nb_read == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
-		close(fd1);
-		close(fd2);
+		close_fd(fd1, file_from);
+		close_fd(fd2, file_to);
 		exit(98);
 	}
 
-	if (close(fd1) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1);
-		exit(100);
-	}
-
-	if (close(fd2) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2);
-		exit(100);
-	}
+	close_fd(fd1, file_from);
+	close_fd(fd2, file_to);
 
 	return (0);
 }
 
 /**
- * main - Entry point of the program.
- * @argc: The number of command-line arguments.
- * @argv: An array of command-line argument strings.
+ * create_file - Creates or opens a file for writing.
+ * @file_to: The name of the file to create or open.
  *
- * Return: Always returns 0 on successful completion.
+ * Return: The file descriptor of the opened or created file.
  */
-int main(int argc, char **argv)
+
+int create_new_file(const char *file_to)
 {
-	int res;
+	int fd2 = open(file_to, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 
-	if (argc != 3)
+	if (fd2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", file_to);
+		exit(99);
 	}
+	return (fd2);
+}
 
-	res = copy_file_func(argv[1], argv[2]);
-	dprintf(STDOUT_FILENO, "%i\n", res);
-	return (0);
+/**
+ * close_fd - Closes a file descriptor and checks for errors.
+ * @fd: The file descriptor to close.
+ * @file_name: The name of the file associated with the descriptor.
+ */
+
+void close_fd(int fd, const char *file_name)
+{
+	if (close(fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd for file %s\n", file_name);
+		exit(100);
+	}
 }

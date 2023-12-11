@@ -1,17 +1,30 @@
 #include "main.h"
-#include <stdio.h>
-
-void _puts(char *s);
+#include <stddef.h>
 
 /**
- * main - Control goes here first
+ * _puts - Prints a string to the standard output, followed by a newline.
  *
- * Return: Always (0) Success
+ * @s: A pointer to the string to be printed.
+ *
  */
 
-int main(void)
+void _puts(char *s)
 {
-	puts("\"Programming is like building a multilingual puzzle");
+	/* Check if the string is not NULL */
+	if (s == NULL)
+	{
+		return;
+	}
 
-	return (0);
+	/* Loop through each character until the null terminator is reached */
+	while (*s != '\0')
+	{
+		/* Print the character */
+		_putchar(*s);
+		/* Move to the next character in the string */
+		s++;
+	}
+
+	/* Print a newline character at the end */
+	_putchar('\n');
 }

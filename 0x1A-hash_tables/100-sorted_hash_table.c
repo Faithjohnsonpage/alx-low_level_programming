@@ -128,7 +128,7 @@ shash_node_t *create_shash_node(const char *key, const char *value)
 	{
 		free(newnode->key);
 		free(newnode);
-		return NULL;
+		return (NULL);
 	}
 
 	newnode->next = NULL;

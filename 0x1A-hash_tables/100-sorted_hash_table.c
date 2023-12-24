@@ -145,24 +145,20 @@ void shash_table_print(const shash_table_t *ht)
 
 	node = ht->shead;
 
-	if (node != NULL)
+	printf("{");
+	while (node != NULL)
 	{
-		printf("{");
-		while (node != NULL)
-		{
-			printf("'%s': '%s'", node->key, node->value);
+		printf("'%s': '%s'", node->key, node->value);
 
-			if (node->snext != NULL)
-				printf(", ");
+		if (node->snext != NULL)
+			printf(", ");
 
-			node = node->snext;
-		}
-		printf("}\n");
+		node = node->snext;
 	}
+	printf("}\n");
+
 }
 
-
-#include "hash_tables.h"
 
 /**
  * shash_table_print_rev - Prints a sorted hash table in reverse order
@@ -178,24 +174,19 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 	node = ht->stail;
 
-	if (node != NULL)
+	printf("{");
+	while (node != NULL)
 	{
-		printf("{");
-		while (node != NULL)
-		{
-			printf("'%s': '%s'", node->key, node->value);
+		printf("'%s': '%s'", node->key, node->value);
 
-			if (node->sprev != NULL)
-				printf(", ");
+		if (node->sprev != NULL)
+			printf(", ");
 
-			node = node->sprev;
-		}
-		printf("}\n");
+		node = node->sprev;
 	}
+	printf("}\n");
+
 }
-
-
-#include "hash_tables.h"
 
 /**
  * shash_table_delete - Deletes a sorted hash table

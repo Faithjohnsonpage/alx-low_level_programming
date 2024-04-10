@@ -19,7 +19,7 @@ int advanced_binary(int *array, size_t size, int value)
 	size_t start = 0, end = size - 1;
 	int index;
 
-	if (array == NULL)
+	if (array == NULL || size == NULL)
 		return (-1);
 
 	index = recursiveBinarySearch(array, start, end, value);

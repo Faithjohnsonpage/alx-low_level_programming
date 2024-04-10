@@ -45,41 +45,24 @@ int recursiveBinarySearch(int *array, size_t start, size_t end, int value)
 {
 	size_t mid, i;
 
-	if (end >= start)
+
+	printf("Searching in array: ");
+	for (i = start; i <= end; i++)
 	{
-		printf("Searching in array: ");
-		for (i = start; i <= end; i++)
-		{
-			if (i == end)
-				printf("%d\n", array[i]);
-			else
-				printf("%d, ", array[i]);
-		}
+		if (i == end)
+			printf("%d\n", array[i]);
+		else
+			printf("%d, ", array[i]);
+	}
 
-		mid = start + (end - start) / 2;
+	mid = start + (end - start) / 2;
 
-		/* Check for potential duplicate values */
-		if (array[mid] != array[end])
-		{
-			if (array[mid] < value)
-				return recursiveBinarySearch(array, mid + 1, end, value);
-			else
-				return recursiveBinarySearch(array, start, mid, value);
-		}
-
-		if (array[mid] == value)
-		{
-			if (mid == start || array[mid - 1] != value)
-				return (mid);
-			else
-				return (recursiveBinarySearch(array, start, mid, value));
-		}
-
-		if (array[mid] > value)
-		{
-			return (recursiveBinarySearch(array, start, mid - 1, value));
-		}
-		return (recursiveBinarySearch(array, mid + 1, end, value));
+	if (array[mid] != array[end])
+	{
+		if (array[mid] < value)
+			return recursiveBinarySearch(array, mid + 1, end, value);
+		else
+			return recursiveBinarySearch(array, start, mid, value);
 	}
 
 	return (-1);

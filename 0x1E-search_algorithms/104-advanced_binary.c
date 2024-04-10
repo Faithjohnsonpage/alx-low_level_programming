@@ -22,6 +22,9 @@ int advanced_binary(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 
+	if (array[start] == value)
+		return (start);
+
 	index = recursiveBinarySearch(array, start, end, value);
 	return (index);
 }

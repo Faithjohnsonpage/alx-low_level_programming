@@ -22,9 +22,6 @@ int advanced_binary(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 
-	if (array[start] == value)
-		return (start);
-
 	index = recursiveBinarySearch(array, start, end, value);
 	return (index);
 }
@@ -56,6 +53,10 @@ int recursiveBinarySearch(int *array, size_t start, size_t end, int value)
 	}
 
 	mid = start + (end - start) / 2;
+
+	if (array[start] == value)
+		return (int(start));
+
 
 	if (array[mid] != array[end])
 	{

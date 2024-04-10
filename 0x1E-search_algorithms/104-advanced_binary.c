@@ -57,6 +57,16 @@ int recursiveBinarySearch(int *array, size_t start, size_t end, int value)
 		}
 
 		mid = start + (end - start) / 2;
+
+		/* Check for potential duplicate values */
+		if (array[mid] != array[end])
+		{
+			if (array[mid] < value)
+				return recursiveBinarySearch(array, mid + 1, end, value);
+			else
+				return recursiveBinarySearch(array, start, mid, value);
+		}
+
 		if (array[mid] == value)
 		{
 			if (mid == start || array[mid - 1] != value)

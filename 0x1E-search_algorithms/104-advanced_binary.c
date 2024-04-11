@@ -2,7 +2,7 @@
 #include "search_algos.h"
 
 int binary_search_recursion(int *array, int value,
-			    size_t low, size_t high);
+		size_t low, size_t high);
 
 /**
  * binary_search_recursion - helper to `advanced_binary`, recursively searches
@@ -16,7 +16,7 @@ int binary_search_recursion(int *array, int value,
  * `array` is NULL
  */
 int binary_search_recursion(int *array, int value,
-			    size_t low, size_t high)
+		size_t low, size_t high)
 {
 	size_t mid, i;
 
@@ -26,7 +26,12 @@ int binary_search_recursion(int *array, int value,
 	mid = (low + high) / 2;
 	printf("Searching in array: ");
 	for (i = low; i <= high; i++)
-		printf("%i%s", array[i], i == high ? "\n" : ", ");
+	{
+		if (i == high)
+			printf("%d\n", array[i]);
+		else
+			printf("%d, ", array[i]);
+	}
 
 	if (array[low] == value)
 		return ((int)low);
@@ -35,10 +40,10 @@ int binary_search_recursion(int *array, int value,
 	{
 		if (array[mid] < value)
 			return (binary_search_recursion(array, value,
-							mid + 1, high));
+						mid + 1, high));
 		if (array[mid] >= value)
 			return (binary_search_recursion(array, value,
-							low, mid));
+						low, mid));
 	}
 
 	return (-1);
